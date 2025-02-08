@@ -234,3 +234,72 @@ fn constant(){
 
     println!("{} {}", MINIMUM, MAXIMUM);
 }
+
+
+#[test]
+fn variable_scope() {
+    let yudis = 1;
+
+    {
+        println!("Inner yudis : {}", yudis);
+
+        let tira = 2;
+
+        println!("Inner Tira : {}", tira);
+    }
+}
+
+#[test]
+fn stack_heap() {
+    function_a();
+    function_b();
+}
+
+#[test]
+fn function_a() {
+    let a: i32 = 10;
+    let b: String = String::from("Yudistira");
+
+    println!("{} {}", a, b);
+}
+
+#[test]
+fn function_b() {
+    let a: i32 = 20;
+    let b: String = String::from("Satya");
+
+    println!("{} {}", a, b);
+}
+
+#[test]
+fn string() {
+    let name: &str = " Yudistira Satya Dewantara ";
+    let trim: &str = name.trim();
+
+    println!("{}", name);
+    println!("{}", trim);
+
+    let mut username: &str = "yudistirasd";
+
+    println!("{}", username);
+
+    username = "yudistira.sd2";
+
+    println!("{}", username);
+}
+
+#[test]
+fn string_type () {
+    let mut name: String = String::from("Yudistira");
+
+    println!("Initial String : {}", name);
+
+    name.push_str(" Satya");
+
+    println!("Push New String : {}", name);
+
+    let name_replaced = name.replace("Satya", "Dewantara");
+
+    println!("Replace String : {}", name_replaced);
+
+}
