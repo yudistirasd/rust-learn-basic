@@ -303,3 +303,107 @@ fn string_type () {
     println!("Replace String : {}", name_replaced);
 
 }
+
+#[test]
+fn ownership_rules() {
+    let a = 10;
+
+    {
+        let b = 20;
+        println!("{}", b);
+    }
+
+    println!("{}", a);
+}
+
+#[test]
+fn data_copy() {
+    let mut a = 10;
+    let b= a;
+
+    println!("Init : {}, {}", a, b);
+
+    a += 5;
+
+    println!("Add : {}, {}", a, b);
+}
+
+#[test]
+fn ownership_movement() {
+    let name1 = String::from("Yudistira");
+
+    let name2 = name1;
+
+    println!("{}", name2);
+    // println!("{}", name1);
+}
+
+#[test]
+fn ownership_clone() {
+    let name1 = String::from("Yudistira");
+
+    let name2 = name1.clone();
+
+    println!("{}", name2);
+    println!("{}", name1);
+}
+
+#[test]
+fn if_expression() {
+    let value = 5;
+
+    if value >= 10 {
+        println!("Uhuyy");
+    } else {
+        println!("Not Uhuyy");
+    }
+}
+
+#[test]
+fn if_elseif_expression() {
+    let value = 1;
+
+    if value >= 8 {
+        println!("Good");
+    } else if value >= 6 {
+        println!("Not Bad");
+    } else if value >= 3 {
+        println!("Bad");
+    } else {
+        println!("Very very bad");
+    }
+}
+
+#[test]
+fn if_elseif_expression_using_manual_let() {
+    let value = 1;
+    let result: &str;
+
+    if value >= 8 {
+        result = "Good";
+    } else if value >= 6 {
+        result = "Not Bad";
+    } else if value >= 3 {
+        result = "Bad";
+    } else {
+        result = "Very very bad";
+    }
+
+    println!("{}", result);
+}
+
+#[test]
+fn if_elseif_expression_using_automatic_let() {
+    let value = 1;
+    let result: &str = if value >= 8 {
+        "Good"
+    } else if value >= 6 {
+        "Not Bad"
+    } else if value >= 3 {
+        "Bad"
+    } else {
+        "Very very bad"
+    };
+
+    println!("{}", result);
+}
