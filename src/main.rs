@@ -527,3 +527,80 @@ fn range_inclusive() {
         println!("{}", array[i]);
     }
 }
+
+// function
+fn say_hello() {
+    println!("Heloo gayess");
+}
+
+fn say_goodbye(first_name: &str, last_name: &str) {
+    println!("Good Bye {} {}", first_name, last_name);
+}
+
+#[test]
+fn test_say_hello() {
+    say_hello();
+    say_hello();
+    say_hello();
+    say_hello();
+}
+
+#[test]
+fn test_say_goodbye() {
+    say_goodbye("Yudistira", "Dewantara");
+    say_goodbye("A", "B");
+    say_goodbye("C", "D");
+}
+
+fn factorial_loop(n: i32) -> i32 {
+    if n < 1 {
+        return 0;
+    }
+
+    let mut result = 1;
+
+    for i in 1..=n {
+        result *= i;
+    }
+
+    result
+}
+
+#[test]
+fn test_factorial_loop() {
+    let result = factorial_loop(5);
+    println!("{}", result);
+
+    let result = factorial_loop(-5);
+    println!("{}", result);
+}
+
+fn print_text(value: String, times: u32) {
+    if times == 0 {
+        return;
+    } else {
+        println!("{}", times);
+    }
+
+    print_text(value, times - 1);
+}
+
+#[test]
+fn test_print_text() {
+    print_text(String::from("Yudistira"), 10);
+}
+
+fn factorial_recursive(n: u32) -> u32 {
+    if n <= 1 {
+        return 1;
+    }
+
+    n * factorial_recursive(n -1)
+}
+
+#[test]
+fn test_factorial_recursive() {
+    let result = factorial_recursive(5);
+
+    println!("{}", result);
+}
