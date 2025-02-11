@@ -604,3 +604,61 @@ fn test_factorial_recursive() {
 
     println!("{}", result);
 }
+
+// ownership di function
+fn print_number(number: i32) {
+    println!("number : {}", number);
+}
+
+fn haii(name: String) {
+    println!("Hi, {}", name);
+}
+
+#[test]
+fn test_hi() {
+    let number = 10;
+
+    print_number(number);
+
+    println!("{}", number);
+
+    let name: String = String::from("Yudistira");
+    haii(name);
+
+    // println!("{}", name);
+}
+
+// ownership function with return
+fn full_name(first_name: String, last_name: String) -> String {
+    format!("{} {}", first_name, last_name)
+}
+
+#[test]
+fn test_full_name() {
+    let first_name = String::from("Yudistira");
+    let last_name = String::from("Dewantara");
+    let full_name = full_name(first_name, last_name);
+
+    println!("{}", full_name);
+    // println!("{}", first_name);
+    // println!("{}", last_name);
+}
+
+// ownership function with return without losing ownership on heap using tuple as return
+fn full_name_tuple(first_name: String, last_name: String) -> (String, String, String) {
+    let full_name = format!("{} {}", first_name, last_name);
+
+    (first_name, last_name, full_name)
+}
+
+#[test]
+fn test_full_name_with_tuple() {
+    let first_name = String::from("Yudistira");
+    let last_name = String::from("Dewantara");
+
+    let (first_name, last_name, full_name) = full_name_tuple(first_name, last_name);
+
+    println!("{}", full_name);
+    println!("{}", first_name);
+    println!("{}", last_name);
+}
