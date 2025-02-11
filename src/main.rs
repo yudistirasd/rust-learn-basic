@@ -461,3 +461,69 @@ fn nested_loop_with_label() {
         number += 1;
     }
 }
+
+#[test]
+fn while_loop() {
+    let mut counter = 0;
+
+    while counter <= 10 {
+        if counter % 2 == 0 {
+            println!("Counter : {}", counter);
+        }
+
+        if counter == 9 {
+            break;
+        }
+
+        counter +=1 ;
+    }
+}
+
+#[test]
+fn array_manual_iteration() {
+    let array: [&str; 5] = ["A", "B", "C", "D", "E"];
+    let mut index = 0;
+
+    while index < array.len() {
+        println!("Value : {}", array[index]);
+
+        index +=1;
+    }
+}
+
+#[test]
+fn array_for_loop_iteration() {
+    let array: [&str; 5] = ["A", "B", "C", "D", "E"];
+
+    for value in array {
+        println!("Value : {}", value);
+    }
+}
+
+#[test]
+fn range_exclusive () {
+    let array: [&str; 5] = ["A", "B", "C", "D", "E"];
+
+    let range = 0..5; // penulisan range exclusive
+
+    println!("Start: {}", range.start); // start diambil
+    println!("End: {}", range.end); // end tidak diambil
+
+    for i in 0..5 {
+        println!("{}", array[i]);
+    }
+}
+
+#[test]
+fn range_inclusive() {
+    let array: [&str; 5] = ["A", "B", "C", "D", "E"];
+
+    let range = 0..=4; // penulisan range inclusive
+
+    println!("Start: {}", range.start()); // start diambil
+    println!("End: {}", range.end()); // end diambil
+
+    for i in range {
+        println!("{}", array[i]);
+    }
+}
